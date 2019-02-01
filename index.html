@@ -17,6 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -36,5 +37,47 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="app">
+                    <i>{{ message }}</i><br>
+                    <input type="text" v-model="message">
+                    <ul>
+                        <li v-for="bear in bears" :class="{'strike': bear.status}">{{ bear.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World",
+                bears:[
+                    {
+                        name:'гризли',
+                        status: false
+                    },
+                    {
+                        name:'белый',
+                        status: false
+                    },
+                    {
+                        name:'панда',
+                        status: true
+                    },
+                    {
+                        name:'губач',
+                        status: false
+                    },
+
+                ]
+            }
+        })
+    </script>
 </body>
 </html>

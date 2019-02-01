@@ -1,3 +1,15 @@
+body {
+  background-color: #3949ad;
+  font-family: Helvetica, sans-serif; }
+
+ul {
+  list-style: none; }
+
+li {
+  font-size: 18px; }
+  li.strike {
+    text-decoration: line-through; }
+
 h1 {
   color: orange; }
 
