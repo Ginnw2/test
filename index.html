@@ -5,8 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Тестируем дальше</title>
-    <link rel="stylesheet" href="main.css">
+    <title> Vue.js</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -15,6 +14,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -46,6 +46,10 @@
                     <ul>
                         <li v-for="bear in bears" :class="{'strike': bear.status}">{{ bear.name }}</li>
                     </ul>
+                    <button @click="onClick">Кнопка</button>
+                    <button class="btn-default" @click="show = !show">Кнопка</button>
+                    <div class="box" v-if="show" ></div>
+
                 </div>
             </div>
         </div>
@@ -75,8 +79,15 @@
                         status: false
                     },
 
-                ]
+                ],
+                show: false
+            },
+            methods:{
+                onClick: function () {
+                    alert(this.message)
+                }
             }
+
         })
     </script>
 </body>

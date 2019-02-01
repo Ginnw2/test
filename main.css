@@ -13,4 +13,17 @@ li {
 h1 {
   color: orange; }
 
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin-bottom: 10px; }
+
+.box {
+  background: lightslategray;
+  width: 500px;
+  height: 500px;
+  margin-top: 50px; }
+
 /*# sourceMappingURL=main.css.map */
