@@ -46,20 +46,27 @@
                     <ul>
                         <li v-for="bear in bears" :class="{'strike': bear.status}">{{ bear.name }}</li>
                     </ul>
-                    <button @click="onClick">Кнопка</button>
+                    <button @click="onClick">Кнопка</button><br>
                     <button class="btn-default" @click="show = !show">Кнопка</button>
-                    <div class="box" v-if="show" ></div>
+                    <div class="box" v-if="show" >
+                        {{ 1000 | currency '₽ ' 0 }}<br>
+                        <input type="text" v-model="input" autofocus>
+                        <ul>
+                            <li v-for="item in array | filterBy input">{{ item.name }}, {{ item.age }}</li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script>
 
         new Vue({
             el: "#app",
             data: {
+                input:'',
                 message: "Hello World",
                 bears:[
                     {
@@ -80,7 +87,21 @@
                     },
 
                 ],
-                show: false
+                show: false,
+                array:[
+                    {
+                        name:'Vladimir',
+                        age: 33
+                    },
+                    {
+                        name:'Evgenii',
+                        age: 22
+                    },
+                    {
+                        name:'Zoya',
+                        age: 42
+                    },
+                ]
             },
             methods:{
                 onClick: function () {
