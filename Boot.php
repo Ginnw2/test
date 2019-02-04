@@ -11,7 +11,7 @@ class Boot{
         $url = $_GET[url];
         $url = explode("/", $url);
         if(empty($url[0])){
-            require 'controllers/Calcurator.php';
+            require 'controllers/Calculator.php';
             $controller = new Calcurator;
             $controller->index();
         }else{
@@ -21,7 +21,7 @@ class Boot{
                 $controller = new $url[0];
                 $controller->index();
             }else{
-                require 'controllers/Calcurator.php';
+                require 'controllers/Calculator.php';
                 $controller = new Calcurator;
                 $controller->index();
             }
