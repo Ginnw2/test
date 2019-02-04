@@ -19,7 +19,9 @@ class Boot{
             if(file_exists($path)){
                 require $path;
                 $controller = new $url[0];
+                $controller->index();
             }else{
+                require 'controllers/Calcurator.php';
                 $controller = new Calcurator;
                 $controller->index();
             }
