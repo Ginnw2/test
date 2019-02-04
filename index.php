@@ -5,5 +5,7 @@
  * Date: 04/02/2019
  * Time: 10:20
  */
-echo "<pre>";
-print_r($_GET["url"]);
+require 'Bot.php';
+require 'Controller.php';
+require 'View.php';
+$app = new Boot;
