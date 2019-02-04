@@ -6,4 +6,4 @@
  * Time: 10:20
  */
 echo "<pre>";
-$_GET["url"];
+print_r($_GET["url"]);
