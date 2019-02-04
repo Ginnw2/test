@@ -5,7 +5,7 @@
  * Date: 04/02/2019
  * Time: 10:20
  */
-require 'Bot.php';
+require 'Boot.php';
 require 'Controller.php';
 require 'View.php';
 $app = new Boot;
