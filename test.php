@@ -9,19 +9,26 @@
     <title>Slick slider</title>
 </head>
 <body>
-<div class="slider single-item">
+<div class="slider multiple-items">
     <div>1</div>
     <div>2</div>
     <div>3</div>
     <div>4</div>
-    <div>5</div>
-    <div>6</div>
+
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
-    $('.single-item').slick();
+    $('.multiple-items').slick({
+        infinite: true,
+        dots: true,
+        slidesToShow: 3,
+        slidesToScroll: 1
+    });
+    $('#slick-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        console.log('Собираемся осуществить переход к '+nextSlide+' слайду');
+    });
 </script>
 </body>
 </html>
