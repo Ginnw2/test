@@ -28,7 +28,7 @@
     });
     $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
         console.log(currentSlide);
-        if (currentSlide == 4) {
+        if (currentSlide == 0) {
             var id = 1;
 
             var form_data = new FormData();
