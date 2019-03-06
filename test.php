@@ -26,8 +26,28 @@
         slidesToShow: 3,
         slidesToScroll: 1
     });
-    $('.multiple-items').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-        console.log('Собираемся осуществить переход к '+nextSlide+' слайду');
+    $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
+        if (currentSlide == 4) {
+            var id = 1;
+
+            var form_data = new FormData();
+            form_data.append('id', id);
+
+            $.ajax({
+                url: 'ajax.php',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'ajax',
+                success: function (php_script_response) {
+                    $(".multiple-items").html(php_script_response);
+
+                }
+            });
+            event.preventDefault();  // Полная остановка происходящего
+        }
     });
 </script>
 </body>
