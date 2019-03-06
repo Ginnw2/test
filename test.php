@@ -26,7 +26,7 @@
         slidesToShow: 3,
         slidesToScroll: 1
     });
-    $('#slick-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    $('.multiple-items').on('beforeChange', function(event, slick, currentSlide, nextSlide){
         console.log('Собираемся осуществить переход к '+nextSlide+' слайду');
     });
 </script>
