@@ -27,6 +27,7 @@
         slidesToScroll: 1
     });
     $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
+        console.log(currentSlide);
         if (currentSlide == 4) {
             var id = 1;
 
