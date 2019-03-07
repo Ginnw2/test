@@ -26,6 +26,16 @@
         slidesToShow: 3,
         slidesToScroll: 1
     });
+    function getSliderSettings(){
+        return {
+            infinite: true,
+            dots: false,
+            slidesToShow: 3,
+            slidesToScroll: 1
+        }
+    }
+
+
     $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
         console.log(currentSlide);
         if (currentSlide == 0) {
@@ -44,7 +54,7 @@
                 type: 'ajax',
                 success: function (php_script_response) {
                     $(".multiple-items").html(php_script_response);
-
+                    $('.multiple-items').slick(getSliderSettings());
                 }
             });
             event.preventDefault();  // Полная остановка происходящего
