@@ -34,12 +34,6 @@
             slidesToScroll: 1
         }
     }
-    function destroyCarousel() {
-        if ($('.skills_section').hasClass('slick-initialized')) {
-            $('.skills_section').slick('destroy');
-        }
-    }
-
 
     $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
         console.log(currentSlide);
@@ -59,7 +53,7 @@
                 type: 'ajax',
                 success: function (php_script_response) {
                     $(".multiple-items").html(php_script_response);
-                    destroyCarousel();
+                    $('.multiple-items').slick('unslick');
                     $('.multiple-items').slick(getSliderSettings());
                 }
             });
