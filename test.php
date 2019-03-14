@@ -14,6 +14,7 @@
     <div>2</div>
     <div>3</div>
     <div>4</div>
+    <div>5</div>
 
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -21,8 +22,8 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
     $('.multiple-items').slick({
-        dots: true,
-        infinite: false,
+        dots: false,
+        infinite: true,
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -54,8 +55,8 @@
     });
     function getSliderSettings(){
         return {
-            dots: true,
-            infinite: false,
+            dots: false,
+            infinite: true,
             speed: 300,
             slidesToShow: 4,
             slidesToScroll: 1,
