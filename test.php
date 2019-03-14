@@ -89,7 +89,7 @@
     }
 
     $('.multiple-items').on('afterChange', function(event, slick, currentSlide) {
-        console.log(slick);
+        console.log(slick[slideCount]);
         if (currentSlide == 0) {
             var id = 1;
 
