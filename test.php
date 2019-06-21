@@ -67,7 +67,7 @@
     $result = curl_exec($ch);
     curl_close ($ch);
     $resCatalogTree = json_decode($result);
-    print_r($resCatalogTree);
+    echo "<pre>"; print_r($resCatalogTree);
     //Список товаров получаем аналогичным образом
     //Получение всех товаров в наличии их цены
     $ch = curl_init("https://b2b.i-t-p.pro/api");
@@ -88,7 +88,7 @@
     $result = curl_exec($ch);
     curl_close ($ch);
     $resProducts = json_decode($result);
-    echo "<pre>"; print_r($resProducts);
+    //echo "<pre>"; print_r($resProducts);
 
 ?>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
