@@ -88,7 +88,7 @@
     $result = curl_exec($ch);
     curl_close ($ch);
     $resProducts = json_decode($result);
-    print_r($resProducts);
+    echo "<pre>"; print_r($resProducts);
 
 ?>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
