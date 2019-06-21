@@ -18,6 +18,79 @@
     <div>5</div>
 
 </div>
+<?
+/**
+ * Created by PhpStorm.
+ * User: ginn
+ * Date: 20/06/2019
+ * Time: 13:31
+ */
+
+    $ch = curl_init("https://b2b.i-t-p.pro/api");
+    //Аутентификация
+    $dataAuth = array("request" => array(
+                        "method" => "login",
+                        "module" => "system"
+                        ),
+                  "data" => array(
+                        "login" => "ruscomp",
+                        "passwd" => "456852"
+                        )
+                    );
+    $dataAuthString = json_encode($dataAuth);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $dataAuthString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Length: ' . strlen($dataAuthString)
+    ));
+    $result = curl_exec($ch);
+    curl_close ($ch);
+    $resAuth = json_decode($result);
+    if (($resAuth) && ($resAuth->success) && ($resAuth->success == 1))
+        echo "Auth success. session_id=" . $resAuth->data->session_id;
+    else {
+        echo "Auth Error\n";
+        print_r($resAuth);
+        die();
+    }
+    //Запоминаем сессию
+    $session = $resAuth->data->session_id;
+
+    //Получение дерева категорий
+    $ch = curl_init("https://b2b.i-t-p.pro/download/catalog/json/catalog_tree.json");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Cookie: session_id=' . $session )
+    );
+    $result = curl_exec($ch);
+    curl_close ($ch);
+    $resCatalogTree = json_decode($result);
+    print_r($resCatalogTree);
+    //Список товаров получаем аналогичным образом
+    //Получение всех товаров в наличии их цены
+    $ch = curl_init("https://b2b.i-t-p.pro/api");
+    $dataAuth = array("request" => array(
+                        "method" => "get_active_products",
+                        "model"  => "client_api",
+                        "module" => "platform"
+                        ),
+                      "session_id" => $session
+                    );
+    $dataAuthString = json_encode($dataAuth);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $dataAuthString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Length: ' . strlen($dataAuthString)
+    ));
+    $result = curl_exec($ch);
+    curl_close ($ch);
+    $resProducts = json_decode($result);
+    print_r($resProducts);
+
+?>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
